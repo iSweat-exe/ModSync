@@ -105,8 +105,9 @@ if %errorlevel% neq 0 (
 echo.
 
 echo.
-echo 🎉 All mods have been installed successfully!
-echo 🎉 You can now launch Minecraft
+echo 🎉 All mods have been installed successfully! 🎉
+echo 🎉 You can now launch Minecraft 🎉
+echo ❤️ ModSync created by iSweat. Thank you for using it! ❤️
 echo.
 pause
 exit
