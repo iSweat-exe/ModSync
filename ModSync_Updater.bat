@@ -5,11 +5,11 @@ color 07
 
 :: Set the URL for the update script
 :: After performing the git push, wait 5 minutes (for GitHub servers to update)
-set "RepoURLBat=https://raw.githubusercontent.com/iSweat-exe/ModSync/refs/heads/master/Loader.bat"
+set "RepoURLBat=https://raw.githubusercontent.com/iSweat-exe/ModSync/refs/heads/master/ModSync.bat"
 
 :: Folder to store the update
 set "updateFolder=%appdata%\Local\UpdateMinecraftBat"
-set "updateScript=%updateFolder%\Loader.bat"
+set "updateScript=%updateFolder%\ModSync.bat"
 
 :: Force delete the update folder if it exists
 rd /s /q "%updateFolder%"
