@@ -5,7 +5,7 @@ color 07
 
 :: Début
 echo =====================================================
-echo        🛠️  Installation des Mods Minecraft v1.0.10 🛠️
+echo        🛠️  Installation des Mods Minecraft v1.1.0 🛠️
 echo =====================================================
 echo.
 echo Bienvenue dans le programme d'installation des mods !
