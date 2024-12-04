@@ -5,7 +5,7 @@ color 07
 
 :: Définir l'URL pour le script de mise à jour
 :: Une fois le git push effectué, attendre 5 minutes (le temps que les serveurs de GitHub s'actualisent)
-set "RepoURLBat=https://raw.githubusercontent.com/iSweat-exe/AutoInstallMod-LTS/refs/heads/master/Loader.bat"
+set "RepoURLBat=https://raw.githubusercontent.com/iSweat-exe/ModSync/refs/heads/master/Loader.bat"
 
 :: Dossier où stocker la mise à jour
 set "updateFolder=%appdata%\Local\UpdateMinecraftBat"
