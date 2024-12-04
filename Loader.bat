@@ -1,11 +1,11 @@
 @echo off
 chcp 65001 >nul
-title 🛠️ Installation des Mods Minecraft 1.20.1
+title 🛠️ ModSync Tool 🛠️
 color 07
 
 :: Début
 echo =====================================================
-echo        🛠️  Installation des Mods Minecraft v1.1.0 🛠️
+echo        🛠️  ModSync v1.1.0 🛠️
 echo =====================================================
 echo.
 echo Bienvenue dans le programme d'installation des mods !
