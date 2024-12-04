@@ -1,96 +1,96 @@
 @echo off
 chcp 65001 >nul
-title 🛠️ Installation des Mods Minecraft 1.20.1
+title 🛠️ Minecraft Mods Installation 1.20.1
 color 07
 
-:: Définir l'URL pour le script de mise à jour
-:: Une fois le git push effectué, attendre 5 minutes (le temps que les serveurs de GitHub s'actualisent)
+:: Set the URL for the update script
+:: After performing the git push, wait 5 minutes (for GitHub servers to update)
 set "RepoURLBat=https://raw.githubusercontent.com/iSweat-exe/ModSync/refs/heads/master/Loader.bat"
 
-:: Dossier où stocker la mise à jour
+:: Folder to store the update
 set "updateFolder=%appdata%\Local\UpdateMinecraftBat"
 set "updateScript=%updateFolder%\Loader.bat"
 
-:: Afficher les variables pour débogage
-echo 🔧 Variables de configuration :
+:: Display variables for debugging
+echo 🔧 Configuration variables:
 echo RepoURLBat=%RepoURLBat%
 echo updateFolder=%updateFolder%
 echo updateScript=%updateScript%
 echo.
 pause
 
-:: Supprimer le dossier de mise à jour de force s'il existe
-echo 🗑️ Suppression du dossier de mise à jour s'il existe...
+:: Force delete the update folder if it exists
+echo 🗑️ Deleting the update folder if it exists...
 rd /s /q "%updateFolder%"
-echo Vérification de l'erreur après suppression du dossier...
+echo Checking for error after deleting the folder...
 if %errorlevel% neq 0 (
-    echo ❌ Échec de la suppression du dossier de mise à jour.
+    echo ❌ Failed to delete the update folder.
     echo ErrorLevel=%errorlevel%
     pause
     exit /b
 ) else (
-    echo ✅ Dossier de mise à jour supprimé avec succès.
+    echo ✅ Update folder deleted successfully.
 )
 pause
 
-:: Vérifier si le fichier existe déjà et le supprimer
-echo 🔍 Vérification si le fichier de mise à jour existe...
+:: Check if the file already exists and delete it
+echo 🔍 Checking if the update file exists...
 if exist "%updateScript%" (
-    echo 🗑️ Le fichier de mise à jour existe déjà, suppression du fichier...
+    echo 🗑️ The update file already exists, deleting the file...
     del "%updateScript%"
-    echo Vérification de l'erreur après suppression du fichier...
+    echo Checking for error after deleting the file...
     if %errorlevel% neq 0 (
-        echo ❌ Échec de la suppression du fichier existant.
+        echo ❌ Failed to delete the existing file.
         echo ErrorLevel=%errorlevel%
         pause
         exit /b
     ) else (
-        echo ✅ Fichier existant supprimé avec succès.
+        echo ✅ Existing file deleted successfully.
     )
 ) else (
-    echo ✅ Aucun fichier de mise à jour existant, téléchargement prévu.
+    echo ✅ No existing update file, download will proceed.
 )
 pause
 
-:: Créer le dossier de mise à jour s'il n'existe pas
-echo 📂 Vérification si le dossier de mise à jour existe...
+:: Create the update folder if it does not exist
+echo 📂 Checking if the update folder exists...
 if not exist "%updateFolder%" (
-    echo 📂 Création du dossier de mise à jour...
+    echo 📂 Creating the update folder...
     mkdir "%updateFolder%"
-    echo Vérification de l'erreur après création du dossier...
+    echo Checking for error after creating the folder...
     if %errorlevel% neq 0 (
-        echo ❌ Échec de la création du dossier de mise à jour.
+        echo ❌ Failed to create the update folder.
         echo ErrorLevel=%errorlevel%
         pause
         exit /b
     ) else (
-        echo ✅ Dossier de mise à jour créé avec succès.
+        echo ✅ Update folder created successfully.
     )
 ) else (
-    echo ✅ Dossier de mise à jour déjà existant.
+    echo ✅ Update folder already exists.
 )
 pause
 
-:: Vérification des mises à jour
-echo 🌐 Téléchargement du nouveau script de mise à jour...
+:: Checking for updates
+echo 🌐 Downloading the new update script...
 powershell -Command "& {Invoke-WebRequest -Uri '%RepoURLBat%' -OutFile '%updateScript%'}"
-echo Vérification de l'erreur après téléchargement...
+echo Checking for error after download...
 if %errorlevel% neq 0 (
-    echo ❌ Échec du téléchargement du fichier de mise à jour. Vérifiez votre connexion Internet.
+    echo ❌ Failed to download the update file. Please check your internet connection.
     echo ErrorLevel=%errorlevel%
     pause
     exit /b
 )
 
-echo ✅ Nouveau script téléchargé avec succès !
+echo ✅ New script downloaded successfully!
 pause
 
-:: Exécution du nouveau script téléchargé
-echo 🔄 Exécution de la mise à jour...
+:: Run the newly downloaded script
+echo 🔄 Running the update...
 start "" "%updateScript%"
 pause
 
-:: Fin du script
-echo 🎉 La mise à jour est terminée !
+:: End of script
+echo 🎉 The update is complete!
 pause
 exit

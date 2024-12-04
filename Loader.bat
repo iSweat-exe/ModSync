@@ -3,51 +3,51 @@ chcp 65001 >nul
 title 🛠️ ModSync Tool 🛠️
 color 07
 
-:: Début
+:: Start
 echo =====================================================
-echo        🛠️  ModSync v1.1.0 🛠️
+echo                🛠️  ModSync v1.1.0 🛠️
 echo =====================================================
 echo.
-echo Bienvenue dans le programme d'installation des mods !
-echo Ce script supprimera vos anciens mods, puis installera les nouveaux.
+echo Welcome to the mod installation program!
+echo This script will remove your old mods and then install the new ones.
 echo.
 pause
 echo.
 
-:: Localisation du dossier .minecraft/mods
+:: Locating the .minecraft/mods folder
 set "modsFolder=%appdata%\.minecraft\mods"
 
 echo.
-echo [Vérification]
+echo [Verification]
 
-:: Vérification du dossier mods
-echo 🔍 Vérification du dossier "mods"
+:: Verifying the mods folder
+echo 🔍 Verifying the "mods" folder
 if not exist "%modsFolder%" (
-    echo ❌📁 Le dossier "mods" n'existe pas. Création en cours...
+    echo ❌📁 The 'mods' folder does not exist. Creating it now...
     mkdir "%modsFolder%"
-    echo ✅📁 Dossier "mods" créé avec succès !
+    echo ✅📁 'mods' folder created successfully!
 ) else (
-    echo ✅📁 Le dossier "mods" a été trouvé.
+    echo ✅📁 The 'mods' folder has been found.
 )
 echo.
 
 timeout /t 1 /nobreak >nul
 
 echo.
-echo [Suppression]
+echo [Deleting]
 
-:: Suppression des anciens fichiers dans le dossier mods
-echo 🗑️ Suppression des anciens mods dans le dossier
+:: Deleting old files in the mods folder
+echo 🗑️ Deleting old mods in the folder
 set /a modCount=0
 for %%f in ("%modsFolder%\*") do set /a modCount+=1
 del /q "%modsFolder%\*" >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ❌ Une erreur est survenue lors de la suppression des anciens mods.
-    echo ❌📁 Vérifiez que le dossier n'est pas ouvert ailleurs.
+    echo ❌ An error occurred while deleting the old mods.
+    echo ❌📁 Make sure the folder is not open elsewhere
     pause
     exit /b
 ) else (
-    echo ✅📁 Tous les anciens mods ont été supprimés avec succès ! "%modCount% éléments"
+    echo ✅📁 All old mods have been successfully deleted! "%modCount% items"
 )
 echo.
 
@@ -56,57 +56,57 @@ timeout /t 1 /nobreak >nul
 echo.
 echo [Mods]
 
-:: Téléchargement des mods
+:: Downloading the mods
 set /a totalMods=3
-echo 🌐📁 Téléchargement des mods... "%totalMods% mods"
+echo 🌐📁 Downloading the mods... "%totalMods% mods"
 echo.
 
-:: Téléchargement du Mod 1
+:: Downloading Mod 1
 :: The Anomaly
 set /a modNumber=1
-echo ⏳ Téléchargement du Mod %modNumber%...
+echo ⏳ Downloading Mod %modNumber%...
 powershell -Command "& {Invoke-WebRequest -Uri 'https://www.curseforge.com/api/v1/mods/1043571/files/5848458/download' -OutFile '%modsFolder%\The_Anomaly.jar'}" >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ❌ Une erreur est survenue lors du téléchargement du Mod %modNumber%.
+    echo ❌ An error occurred while downloading Mod %modNumber%.
     pause
     exit /b
 ) else (
-    echo ✅ Mod %modNumber% installé avec succès ! "%modNumber%/%totalMods%"
+    echo ✅ Mod %modNumber% installed successfully! "%modNumber%/%totalMods%"
 )
 echo.
 
 :: Create
 set /a modNumber+=1
-echo ⏳ Téléchargement du Mod %modNumber%...
+echo ⏳ Downloading Mod %modNumber%...
 powershell -Command "& {Invoke-WebRequest -Uri 'https://www.curseforge.com/api/v1/mods/328085/files/5838779/download' -OutFile '%modsFolder%\Create.jar'}" >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ❌ Une erreur est survenue lors du téléchargement du Mod %modNumber%.
+    echo ❌ An error occurred while downloading Mod %modNumber%.
     pause
     exit /b
 ) else (
-    echo ✅ Mod %modNumber% installé avec succès ! "%modNumber%/%totalMods%"
+    echo ✅ Mod %modNumber% installed successfully! "%modNumber%/%totalMods%"
 )
 echo.
 
 
 echo [Libs]
-:: Téléchargement des Libs
+:: Downloading the Libs
 :: GeckoLib
 set /a modNumber+=1
-echo ⏳ Téléchargement du Mod %modNumber%...
+echo ⏳ Downloading Mod %modNumber%...
 powershell -Command "& {Invoke-WebRequest -Uri 'https://www.curseforge.com/api/v1/mods/388172/files/5675221/download' -OutFile '%modsFolder%\GeckoLib.jar'}" >nul 2>&1
 if %errorlevel% neq 0 (
-    echo ❌ Une erreur est survenue lors du téléchargement du Mod %modNumber%.
+    echo ❌ An error occurred while downloading Mod %modNumber%.
     pause
     exit /b
 ) else (
-    echo ✅ %modNumber% mods ont etait installé avec succès ! "%modNumber%/%totalMods%"
+    echo ✅ %modNumber% mods have been installed successfully! "%modNumber%/%totalMods%"
 )
 echo.
 
 echo.
-echo 🎉 Tous les mods ont été installés avec succès !
-echo 🎉 Vous pouvez maintenant lancer TLauncher / Minecraft Launcher
+echo 🎉 All mods have been installed successfully!
+echo 🎉 You can now launch Minecraft
 echo.
 pause
 exit
