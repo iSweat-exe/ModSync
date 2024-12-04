@@ -5,7 +5,7 @@ color 07
 
 :: Start
 echo =====================================================
-echo                🛠️  ModSync v1.1.0 🛠️
+echo                🛠️  ModSync v1.1.5 🛠️
 echo =====================================================
 echo.
 echo Welcome to the mod installation program!
