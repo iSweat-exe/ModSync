@@ -10,6 +10,7 @@ echo =====================================================
 echo.
 echo Welcome to the mod installation program!
 echo This script will remove your old mods and then install the new ones.
+echo ❤️ ModSync created by iSweat. Thank you for using it! ❤️
 echo.
 pause
 echo.
