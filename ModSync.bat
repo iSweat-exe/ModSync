@@ -5,7 +5,7 @@ color 07
 
 :: Start
 echo =====================================================
-echo                🛠️  ModSync v1.1.0 🛠️
+echo                🛠️  ModSync [v1.2.0] 🛠️
 echo =====================================================
 echo.
 echo Welcome to the mod installation program!
@@ -57,55 +57,29 @@ timeout /t 1 /nobreak >nul
 echo.
 echo [Mods]
 
-:: Downloading the mods
-set /a totalMods=3
-echo 🌐📁 Downloading the mods... "%totalMods% mods"
-echo.
-
-:: Downloading Mod 1
-:: The Anomaly
-set /a modNumber=1
-echo ⏳ Downloading Mod %modNumber%...
-powershell -Command "& {Invoke-WebRequest -Uri 'https://www.curseforge.com/api/v1/mods/1043571/files/5848458/download' -OutFile '%modsFolder%\The_Anomaly.jar'}" >nul 2>&1
-if %errorlevel% neq 0 (
-    echo ❌ An error occurred while downloading Mod %modNumber%.
+:: Check if mod-list.txt exists
+if not exist "mod-list.txt" (
+    echo ❌ The file "mod-list.txt" is missing. Please create it and try again.
     pause
     exit /b
-) else (
-    echo ✅ Mod %modNumber% installed successfully! "%modNumber%/%totalMods%"
+)
+
+:: Download mods from mod-list.txt
+set /a modNumber=0
+for /f "tokens=1,2 delims= " %%A in (mod-list.txt) do (
+    set /a modNumber+=1
+    echo ⏳ Downloading Mod %%A...
+    powershell -Command "& {Invoke-WebRequest -Uri '%%A' -OutFile '%modsFolder%\%%B'}" >nul 2>&1
+    if %errorlevel% neq 0 (
+        echo ❌ An error occurred while downloading Mod %%A.
+        pause
+        exit /b
+    ) else (
+        echo ✅ Mod %%B installed successfully! "%modNumber%"
+    )
 )
 echo.
 
-:: Create
-set /a modNumber+=1
-echo ⏳ Downloading Mod %modNumber%...
-powershell -Command "& {Invoke-WebRequest -Uri 'https://www.curseforge.com/api/v1/mods/328085/files/5838779/download' -OutFile '%modsFolder%\Create.jar'}" >nul 2>&1
-if %errorlevel% neq 0 (
-    echo ❌ An error occurred while downloading Mod %modNumber%.
-    pause
-    exit /b
-) else (
-    echo ✅ Mod %modNumber% installed successfully! "%modNumber%/%totalMods%"
-)
-echo.
-
-
-echo [Libs]
-:: Downloading the Libs
-:: GeckoLib
-set /a modNumber+=1
-echo ⏳ Downloading Mod %modNumber%...
-powershell -Command "& {Invoke-WebRequest -Uri 'https://www.curseforge.com/api/v1/mods/388172/files/5675221/download' -OutFile '%modsFolder%\GeckoLib.jar'}" >nul 2>&1
-if %errorlevel% neq 0 (
-    echo ❌ An error occurred while downloading Mod %modNumber%.
-    pause
-    exit /b
-) else (
-    echo ✅ %modNumber% mods have been installed successfully! "%modNumber%/%totalMods%"
-)
-echo.
-
-echo.
 echo 🎉 All mods have been installed successfully! 🎉
 echo 🎉 You can now launch Minecraft 🎉
 echo ❤️ ModSync created by iSweat. Thank you for using it! ❤️
