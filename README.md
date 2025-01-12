@@ -39,7 +39,6 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/i
 
 ---
 
----
 
 > [!NOTE]
 >
@@ -47,7 +46,6 @@ powershell -Command "Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/i
 > - The software is also available for download at https://modsync.netlify.app/.
 > - It is still currently, unfortunately, quite complicated to use (especially when adding mods to the mod-list.txt file).
 
----
 ---
 
 <p align="center">Made with Code ❤️</p>
