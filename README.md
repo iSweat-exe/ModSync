@@ -1,5 +1,5 @@
 <!-- ModSync Presentation -->
-<p align="center"><img src="https://www.dropbox.com/scl/fi/copnpbd0he8wt8lhhxc4f/image-1.png?rlkey=ruy2ehiyd6n0v2q7vodg5witz&st=ve6z1k0d&dl=1" alt="MS Logo"></p>
+<p align="center"><img src="https://www.dropbox.com/scl/fi/copnpbd0he8wt8lhhxc4f/image-1.png?rlkey=ruy2ehiyd6n0v2q7vodg5witz&st=ve6z1k0d&dl=0" alt="MS Logo"></p>
 
 <h1 align="center">ModSync v1.2.0 (MSync)</h1>
 
